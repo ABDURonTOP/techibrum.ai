@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>TECHIBRUM | Contact - Establish Your Digital Pipeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        * { box-sizing: border-box; }
+        .glow-matrix {
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.15), inset 0 0 5px rgba(0, 255, 65, 0.1);
+        }
+        .glow-text {
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+        }
+        .border-glow {
+            border-color: #00ff41;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+        }
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .hairline-border {
+            border: 1px solid #232326;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cursor-blink::after {
+            content: '▌';
+            animation: blink 0.5s step-end infinite;
+            color: #00ff41;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131314; }
+        ::-webkit-scrollbar-thumb { background: #00ff41; border-radius: 2px; }
+
+        .status-pulse {
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .contact-channel {
+            transition: all 0.3s ease;
+        }
+        .contact-channel:hover {
+            border-color: rgba(0, 255, 65, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .matrix-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 65, 0.3) 20%, rgba(0, 255, 65, 0.5) 50%, rgba(0, 255, 65, 0.3) 80%, transparent 100%);
+        }
+        .typing-line {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid transparent;
+            animation: typing 2.5s steps(40, end) forwards;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        /* Mobile menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        .mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .contact-hero-headline {
+                font-size: 28px !important;
+                line-height: 1.2 !important;
+            }
+            .contact-hero-sub {
+                font-size: 14px !important;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#003907",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#72ff70",
+                    "secondary-fixed-dim": "#99d688",
+                    "primary-fixed-dim": "#00e639",
+                    "outline-variant": "#3b4b37",
+                    "secondary-container": "#1e5416",
+                    "on-primary-fixed-variant": "#00530e",
+                    "inverse-primary": "#006e16",
+                    "surface-container-highest": "#353436",
+                    "on-surface": "#e5e2e3",
+                    "tertiary": "#fff8f4",
+                    "inverse-on-surface": "#313031",
+                    "primary-container": "#00ff41",
+                    "surface-bright": "#3a393a",
+                    "on-primary-fixed": "#002203",
+                    "secondary": "#99d688",
+                    "on-tertiary-fixed": "#2c1701",
+                    "on-secondary-fixed-variant": "#1b5114",
+                    "surface-dim": "#131314",
+                    "on-tertiary": "#442b10",
+                    "inverse-surface": "#e5e2e3",
+                    "error-container": "#93000a",
+                    "surface": "#131314",
+                    "surface-container-high": "#2a2a2b",
+                    "outline": "#84967e",
+                    "surface-variant": "#353436",
+                    "on-primary-container": "#007117",
+                    "background": "#131314",
+                    "on-secondary-fixed": "#002200",
+                    "tertiary-container": "#ffd5ae",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#442b10",
+                    "on-background": "#e5e2e3",
+                    "on-secondary": "#003a00",
+                    "primary": "#ebffe2",
+                    "on-secondary-container": "#8cc77b",
+                    "surface-container": "#201f20",
+                    "on-tertiary-fixed-variant": "#5d4124",
+                    "tertiary-fixed": "#ffdcbd",
+                    "secondary-fixed": "#b5f3a2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "12px",
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "stack-md": "32px",
+                    "stack-lg": "64px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Geist"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-md": ["Geist"],
+                    "button": ["Geist"],
+                    "display-lg": ["Geist"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-mono": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "button": ["14px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                    "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary overflow-x-hidden">
+
+<!-- Top Navigation Shell with Mobile Menu -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+        <div class="flex items-center gap-2">
+            <a href="code.html">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary-container shadow-[0_0_8px_#00ff41]"></span>
+                <div class="font-headline-md text-headline-md font-bold text-primary-container tracking-tighter inline">TECHIBRUM</div>
+            </a>
+        </div>
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center space-x-8">
+            <a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors duration-300 font-button text-button" href="code.html">MODULES</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors duration-300 font-button text-button" href="code.html#faq">FAQ</a>
+            <a class="text-primary-container font-medium transition-colors duration-300 font-button text-button border-b border-primary-container pb-1" href="contact.html">CONTACT</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors duration-300 font-button text-button" href="about.html">ABOUT</a>
+        </nav>
+        <!-- Mobile hamburger + CTA -->
+        <div class="flex items-center gap-3 md:hidden">
+            <a href="contact.html" class="bg-primary-container text-on-primary font-button text-button px-4 py-2 rounded-DEFAULT text-xs hover:shadow-[0_0_20px_rgba(0,255,65,0.4)] transition-all duration-300">START</a>
+            <button id="mobile-menu-btn" class="text-on-surface hover:text-primary-container transition-colors">
+                <span class="material-symbols-outlined text-2xl" data-icon="menu">menu</span>
+            </button>
+        </div>
+        <a href="https://cal.com/abdurrr-gtg9sb/lets-build" class="hidden md:block">
+            <button class="bg-primary-container text-on-primary font-button text-button px-6 py-3 rounded-DEFAULT hover:shadow-[0_0_20px_rgba(0,255,65,0.4)] transition-all duration-300 active:scale-95">START PROJECT</button>
+        </a>
+    </div>
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="mobile-menu md:hidden bg-background/95 backdrop-blur-xl border-t border-outline-variant/20">
+        <div class="px-margin-mobile py-4 space-y-3">
+            <a class="block text-on-surface-variant font-medium hover:text-primary-container transition-colors font-button text-button py-2" href="code.html">MODULES</a>
+            <a class="block text-on-surface-variant font-medium hover:text-primary-container transition-colors font-button text-button py-2" href="code.html#faq">FAQ</a>
+            <a class="block text-primary-container font-medium transition-colors font-button text-button py-2 border-l-2 border-primary-container pl-3" href="contact.html">CONTACT</a>
+            <a class="block text-on-surface-variant font-medium hover:text-primary-container transition-colors font-button text-button py-2" href="about.html">ABOUT</a>
+        </div>
+    </div>
+</header>
+
+<main class="pt-24">
+    <!-- ============================================ -->
+    <!-- HERO SECTION                                 -->
+    <!-- ============================================ -->
+    <section class="relative min-h-[70vh] flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-stack-lg overflow-hidden">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-container/5 rounded-full blur-[120px] -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary-container/3 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="relative z-10 max-w-screen-2xl mx-auto w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+                <div class="lg:col-span-7 space-y-stack-md">
+                    <div class="flex items-center gap-2 mb-4">
+                    </div>
+                    <h1 class="contact-hero-headline font-headline-lg text-[48px] md:text-[56px] xl:text-headline-lg leading-tight uppercase" style="font-weight:700;">
+                        MAP YOUR<br/>
+                        <span class="text-primary-container glow-text">ASSETS TODAY</span><br/>
+                    </h1>
+                    <p class="contact-hero-sub font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Whether you're ready to deploy your autonomous infrastructure or simply exploring what's possible - Tell us about your practice, and we'll engineer a system that works as hard as you do.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#channels-section">
+                            <button class="group flex items-center gap-3 bg-primary-container text-on-primary font-button text-button px-8 py-4 rounded-DEFAULT hover:shadow-[0_0_20px_rgba(0,255,65,0.4)] transition-all duration-300 active:scale-95">
+                                VIEW CHANNELS
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="expand_more">expand_more</span>
+                            </button>
+                        </a>
+                        <a href="about.html">
+                            <button class="group flex items-center gap-3 border border-primary-container px-8 py-4 text-primary-container font-button text-button hover:bg-primary-container/10 transition-all rounded-DEFAULT">
+                                ABOUT TECHIBRUM
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Live Status Panel -->
+                <div class="lg:col-span-4 lg:col-start-9 self-start">
+                    <div class="glass-panel hairline-border p-5 rounded-lg space-y-4">
+                        <div class="flex justify-between items-center border-b border-outline-variant/30 pb-3">
+                            <span class="font-label-mono text-[10px] text-on-surface-variant">SYSTEM STATUS // CONTACT</span>
+                            <span class="material-symbols-outlined text-primary-container text-sm" data-icon="wifi">wifi</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="font-label-mono text-[10px] text-on-surface-variant uppercase">Response Time</span>
+                                <span class="text-primary-container font-label-mono text-[11px]">< 4 HOURS</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="font-label-mono text-[10px] text-on-surface-variant uppercase">Availability</span>
+                                <span class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#00ff41] status-pulse"></span>
+                                    <span class="text-primary-container font-label-mono text-[11px]">ON SERVICE</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matrix Divider -->
+    <div class="matrix-divider mx-margin-mobile md:mx-margin-desktop"></div>
+
+    <!-- ============================================ -->
+    <!-- 3 CONTACT OPTIONS - Direct Channels          -->
+    <!-- ============================================ -->
+    <section id="channels-section" class="px-margin-mobile md:px-margin-desktop py-stack-lg">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="mb-12 flex items-baseline gap-4">
+                <h2 class="font-headline-lg text-headline-lg uppercase tracking-tight">CHOOSE YOUR CHANNEL</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <!-- Option 1: Email -->
+                <a href="mailto:abdurmyself@gmail.com" class="contact-channel glass-panel hairline-border p-6 rounded-lg group block relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/5 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/2 group-hover:bg-primary-container/10 transition-all"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-label-mono text-[10px] text-primary-container">// EMAIL</span>
+                            <span class="material-symbols-outlined text-primary-container text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" data-icon="mail">mail</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Email Gateway</h3>
+                        <p class="text-on-surface-variant text-sm mb-6">Direct line to our engineering team. Expect a response within 4 business hours. Fastest response channel.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-mono text-[11px] text-primary-container underline decoration-primary-container/40 underline-offset-4">abdurmyself@gmail.com</span>
+                            <span class="material-symbols-outlined text-primary-container text-base group-hover:translate-x-1 transition-transform" data-icon="open_in_new">open_in_new</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Option 2: Instagram -->
+                <a href="https://www.instagram.com/techibrum.ai/" target="_blank" class="contact-channel glass-panel hairline-border p-6 rounded-lg group block relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/5 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/2 group-hover:bg-primary-container/10 transition-all"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-label-mono text-[10px] text-primary-container">// SOCIAL</span>
+                            <svg class="text-primary-container w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="5"/>
+                                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-2">OUR OFFICIAL INSTAGRAM PAGE</h3>
+                        <p class="text-on-surface-variant text-sm mb-6">Follow us for infrastructure insights, case studies, and industry benchmarks. DM us for direct inquiries.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-mono text-[11px] text-primary-container underline decoration-primary-container/40 underline-offset-4">/company/techibrum-ai</span>
+                            <span class="material-symbols-outlined text-primary-container text-base group-hover:translate-x-1 transition-transform" data-icon="open_in_new">open_in_new</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Option 3: WhatsApp / Phone — EDIT YOUR NUMBER HERE -->
+                <a href="https://cal.com/abdurrr-gtg9sb/diagnose" target="_blank" class="contact-channel glass-panel hairline-border p-6 rounded-lg group block relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/5 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/2 group-hover:bg-primary-container/10 transition-all"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-label-mono text-[10px] text-primary-container">// DIRECT</span>
+                            <span class="material-symbols-outlined text-primary-container text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" data-icon="chat">chat</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-2">BOOK A GOOGLE MEET</h3>
+                        <p class="text-on-surface-variant text-sm mb-6">Need a quick conversation? Pick Your Slot for immediate assistance. Best for detailed inquiries.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-mono text-[11px] text-primary-container underline decoration-primary-container/40 underline-offset-4">TAP TO BOOK →</span>
+                            <span class="material-symbols-outlined text-primary-container text-base group-hover:translate-x-1 transition-transform" data-icon="open_in_new">open_in_new</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matrix Divider -->
+    <div class="matrix-divider mx-margin-mobile md:mx-margin-desktop"></div>
+
+    <!-- ============================================ -->
+    <!-- SIDEBAR INFO SECTION                         -->
+    <!-- ============================================ -->
+    <section class="px-margin-mobile md:px-margin-desktop py-stack-lg">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="mb-12 flex items-baseline gap-4">
+                <h2 class="font-headline-lg text-headline-lg uppercase tracking-tight">WHAT HAPPENS AFTER</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+                <!-- Left: Process Cards -->
+                <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                    <div class="glass-panel hairline-border p-5 rounded-lg">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-primary-container text-sm" data-icon="search">search</span>
+                            <span class="font-label-mono text-[10px] text-primary-container uppercase">Step 01</span>
+                        </div>
+                        <h4 class="font-headline-md text-[16px] text-on-surface mb-2">Intake & Analysis</h4>
+                        <p class="text-on-surface-variant text-xs">I, Myself review your practice profile and identify the optimal infrastructure stack for your specific needs.</p>
+                    </div>
+                    <div class="glass-panel hairline-border p-5 rounded-lg">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-primary-container text-sm" data-icon="description">description</span>
+                            <span class="font-label-mono text-[10px] text-primary-container uppercase">Step 02</span>
+                        </div>
+                        <h4 class="font-headline-md text-[16px] text-on-surface mb-2">Custom Proposal</h4>
+                        <p class="text-on-surface-variant text-xs">You receive a tailored proposal with projected ROI metrics and deployment timeline.</p>
+                    </div>
+                    <div class="glass-panel hairline-border p-5 rounded-lg">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-primary-container text-sm" data-icon="rocket_launch">rocket_launch</span>
+                            <span class="font-label-mono text-[10px] text-primary-container uppercase">Step 03</span>
+                        </div>
+                        <h4 class="font-headline-md text-[16px] text-on-surface mb-2">Deployment & Handoff</h4>
+                        <p class="text-on-surface-variant text-xs">I engineer and deploy your autonomous pipeline. Your infrastructure goes live and you get your time back.</p>
+                    </div>
+                </div>
+
+                <!-- Right: Info Cards -->
+                <div class="lg:col-span-4 space-y-gutter mt-8 lg:mt-0">
+                    <div class="glass-panel hairline-border p-5 rounded-lg">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-primary-container text-sm" data-icon="lock">lock</span>
+                            <span class="font-label-mono text-[10px] text-primary-container uppercase">Your Data is Secure</span>
+                        </div>
+                        <p class="text-on-surface-variant text-sm">All transmissions are encrypted, Your practice's operational intelligence remains confidential.</p>
+                    </div>
+                    <div class="glass-panel hairline-border p-5 rounded-lg bg-primary-container/5 border-primary-container/20">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="material-symbols-outlined text-primary-container text-sm" data-icon="bolt">bolt</span>
+                            <span class="font-label-mono text-[10px] text-primary-container uppercase">Immediate Assistance</span>
+                        </div>
+                        <p class="text-on-surface-variant text-sm mb-4">Need urgent support? Use the INSTA DM or email me or my personal email. I will try my best to Prioritize your request.
+ urgent requests.</p>
+                        <div class="font-label-mono text-[10px] text-on-surface-variant">
+                            <span class="text-primary-container">→ </span>Response time: <span class="text-on-surface">< 2 hours</span> for urgent
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matrix Divider -->
+    <div class="matrix-divider mx-margin-mobile md:mx-margin-desktop"></div>
+
+    <!-- ============================================ -->
+    <!-- CTA BANNER                                  -->
+    <!-- ============================================ -->
+    <section class="px-margin-mobile md:px-margin-desktop py-stack-lg">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="glass-panel hairline-border rounded-lg p-8 md:p-16 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-primary-container/5 rounded-full blur-[100px]"></div>
+                <div class="relative z-10 max-w-2xl mx-auto">
+                    <div class="flex justify-center mb-4">
+                    </div>
+                    <h2 class="font-headline-lg text-headline-lg uppercase tracking-tight mb-4">
+                        READY TO ENGINEER<br/>
+                        <span class="text-primary-container glow-text">YOUR INFRASTRUCTURE</span>?
+                    </h2>
+                    <p class="text-on-surface-variant text-body-md max-w-lg mx-auto mb-8">
+                        You've seen the architecture. You understand the velocity. The pipeline is waiting for your signal.
+                    </p>
+                    <a href="#channels-section">
+                        <button class="group flex items-center gap-3 bg-primary-container text-on-primary font-button text-button px-10 py-5 rounded-DEFAULT hover:shadow-[0_0_20px_rgba(0,255,65,0.4)] transition-all duration-300 active:scale-95 mx-auto">
+                            PICK A CHANNEL
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="send">send</span>
+                        </button>
+                    </a>
+                    <p class="mt-6 font-label-mono text-[10px] text-on-surface-variant">No commitment required. Every inquiry receives a free infrastructure audit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md bg-surface-container-lowest border-t border-outline-variant/20 mt-20">
+<div class="space-y-4 text-center md:text-left mb-8 md:mb-0">
+<div class="font-headline-md text-headline-md font-bold text-primary-container">TECHIBRUM</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant">© 2026 TECHIBRUM GLOBAL. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex items-center gap-8">
+<a class="text-on-surface-variant font-label-mono text-label-mono hover:text-primary-fixed transition-all uppercase" href="https://www.instagram.com/techibrum.ai">INSTAGRAM</a>
+<a class="text-on-surface-variant font-label-mono text-label-mono hover:text-primary-fixed transition-all uppercase" href="https://www.linkedin.com/company/techibrum-ai">LINKEDIN</a>
+<a class="text-on-surface-variant font-label-mono text-label-mono hover:text-primary-fixed transition-all uppercase" href="#">TWITTER</a>
+</div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('open');
+        const icon = this.querySelector('.material-symbols-outlined');
+        if (mobileMenu.classList.contains('open')) {
+            icon.textContent = 'close';
+            icon.setAttribute('data-icon', 'close');
+        } else {
+            icon.textContent = 'menu';
+            icon.setAttribute('data-icon', 'menu');
+        }
+    });
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (mobileMenu && mobileMenu.classList.contains('open')) {
+                mobileMenu.classList.remove('open');
+                const icon = menuBtn.querySelector('.material-symbols-outlined');
+                if (icon) { icon.textContent = 'menu'; icon.setAttribute('data-icon', 'menu'); }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>
