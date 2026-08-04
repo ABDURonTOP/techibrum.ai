@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>TECHIBRUM | Digital Infrastructure for Professionals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        * { box-sizing: border-box; }
+        .glow-matrix {
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.15), inset 0 0 5px rgba(0, 255, 65, 0.1);
+        }
+        .glow-text {
+            text-shadow: 0 0 8px rgba(212, 231, 216, 0.4);
+        }
+        .border-glow {
+            border-color: #00ff41;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+        }
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .matrix-gradient-bg {
+            background: linear-gradient(180deg, rgba(0, 255, 65, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+        .hairline-border {
+            border: 1px solid #232326;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: #1c1b1c;
+            height: 4px;
+            border-radius: 2px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #00ff41;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+            cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #00ff41;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+            cursor: pointer;
+            border: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Telemetry typewriter cursor blink */
+        .cursor-blink::after {
+            content: '▌';
+            animation: blink 0.5s step-end infinite;
+            color: #00ff41;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131314; }
+        ::-webkit-scrollbar-thumb { background: #00ff41; border-radius: 2px; }
+
+        /* Typewriter cursor for niche rotator */
+        .typewriter-cursor::after {
+            content: '▌';
+            animation: blink 0.5s step-end infinite;
+            color: #00ff41;
+            margin-left: 2px;
+        }
+
+        /* ROI breakdown toggle */
+        .roi-breakdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+        .roi-breakdown.open {
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        .mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        /* Mobile-friendly adjustments */
+        @media (max-width: 768px) {
+            .hero-headline {
+                font-size: 28px !important;
+                line-height: 1.2 !important;
+            }
+            .hero-subtitle {
+                font-size: 14px !important;
+            }
+            .stat-card-value {
+                font-size: 28px !important;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#003907",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#72ff70",
+                    "secondary-fixed-dim": "#99d688",
+                    "primary-fixed-dim": "#00e639",
+                    "outline-variant": "#3b4b37",
+                    "secondary-container": "#1e5416",
+                    "on-primary-fixed-variant": "#00530e",
+                    "inverse-primary": "#006e16",
+                    "surface-container-highest": "#353436",
+                    "on-surface": "#e5e2e3",
+                    "tertiary": "#fff8f4",
+                    "inverse-on-surface": "#313031",
+                    "primary-container": "#00ff41",
+                    "surface-bright": "#3a393a",
+                    "on-primary-fixed": "#002203",
+                    "secondary": "#99d688",
+                    "on-tertiary-fixed": "#2c1701",
+                    "on-secondary-fixed-variant": "#1b5114",
+                    "surface-dim": "#131314",
+                    "on-tertiary": "#442b10",
+                    "inverse-surface": "#e5e2e3",
+                    "error-container": "#93000a",
+                    "surface": "#131314",
+                    "surface-container-high": "#2a2a2b",
+                    "outline": "#84967e",
+                    "surface-variant": "#353436",
+                    "on-primary-container": "#007117",
+                    "background": "#131314",
+                    "on-secondary-fixed": "#002200",
+                    "tertiary-container": "#ffd5ae",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#442b10",
+                    "on-background": "#e5e2e3",
+                    "on-secondary": "#003a00",
+                    "primary": "#ebffe2",
+                    "on-secondary-container": "#8cc77b",
+                    "surface-container": "#201f20",
+                    "on-tertiary-fixed-variant": "#5d4124",
+                    "tertiary-fixed": "#ffdcbd",
+                    "secondary-fixed": "#b5f3a2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "12px",
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "stack-md": "32px",
+                    "stack-lg": "64px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Geist"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-md": ["Geist"],
+                    "button": ["Geist"],
+                    "display-lg": ["Geist"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-mono": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "button": ["14px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                    "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary overflow-x-hidden">
+<!-- Top Navigation Shell with Mobile Menu -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+        <div class="flex items-center gap-2">
+            <a href="index.html">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary-container shadow-[0_0_8px_#00ff41]"></span>
+                <div class="font-headline-md text-headline-md font-bold text-primary-container tracking-tighter inline">TECHIBRUM</div>
+            </a>
+        </div>
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center space-x-8">
+            <a class="text-primary-container font-medium transition-colors duration-300 font-button text-button border-b border-primary-container pb-1" href="index.html">MODULES</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors duration-300 font-button text-button" href="#faq">FAQ</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors duration-300 font-button text-button" href="contact.html">CONTACT</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors duration-300 font-button text-button" href="about.html">ABOUT</a>
+        </nav>
+        <!-- Mobile hamburger + CTA -->
+        <div class="flex items-center gap-3 md:hidden">
+            <a href="contact.html" class="bg-primary-container text-on-primary font-button text-button px-4 py-2 rounded-DEFAULT text-xs hover:shadow-[0_0_20px_rgba(0,255,65,0.4)] transition-all duration-300">START</a>
+            <button id="mobile-menu-btn" class="text-on-surface hover:text-primary-container transition-colors">
+                <span class="material-symbols-outlined text-2xl" data-icon="menu">menu</span>
+            </button>
+        </div>
+        <a href="https://cal.com/abdurrr-gtg9sb/lets-build" class="hidden md:block">
+            <button class="bg-primary-container text-on-primary font-button text-button px-6 py-3 rounded-DEFAULT hover:shadow-[0_0_20px_rgba(0,255,65,0.4)] transition-all duration-300 active:scale-95">START PROJECT</button>
+        </a>
+    </div>
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="mobile-menu md:hidden bg-background/95 backdrop-blur-xl border-t border-outline-variant/20">
+        <div class="px-margin-mobile py-4 space-y-3">
+            <a class="block text-primary-container font-medium transition-colors font-button text-button py-2 border-l-2 border-primary-container pl-3" href="index.html">MODULES</a>
+            <a class="block text-on-surface-variant font-medium hover:text-primary-container transition-colors font-button text-button py-2" href="#faq">FAQ</a>
+            <a class="block text-on-surface-variant font-medium hover:text-primary-container transition-colors font-button text-button py-2" href="contact.html">CONTACT</a>
+            <a class="block text-on-surface-variant font-medium hover:text-primary-container transition-colors font-button text-button py-2" href="about.html">ABOUT</a>
+        </div>
+    </div>
+</header>
+<main class="pt-24">
+<!-- Hero Section - Full Screen -->
+<section class="relative min-h-[calc(100vh-96px)] flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-stack-lg overflow-hidden">
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center w-full max-w-screen-2xl mx-auto">
+<div class="lg:col-span-8 space-y-stack-md">
+<div class="flex items-center gap-2 mb-4">
+
+</div>
+<h1 class="hero-headline font-headline-lg text-[48px] md:text-[56px] xl:text-headline-lg leading-tight uppercase" style="font-weight:700;">
+                        DIGITAL INFRASTRUCTURE<br/>
+<span id="niche-rotator" class="text-primary-container glow-text typewriter-cursor">FOR REAL ESTATE</span><br/>
+                        PROFESSIONALS.
+                    </h1>
+<p id="niche-subtitle" class="hero-subtitle font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Accelerate your property reach with automated high-definition pipelines. We engineer the systems that power modern real estate distribution.
+                    </p>
+<div class="pt-4">
+<a href="https://cal.com/abdurrr-gtg9sb/diagnose" class="inline-block">
+<button class="group flex items-center gap-3 border border-primary-container px-8 py-4 text-primary-container font-button text-button hover:bg-primary-container/10 transition-all">
+                                LET'S TALK
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</a>
+</div>
+</div>
+<div class="lg:col-span-4 lg:col-start-9 self-start w-full">
+<div class="glass-panel hairline-border p-4 rounded-lg">
+<div class="flex items-center gap-2 pb-3 border-b border-outline-variant/30 mb-4">
+<span class="material-symbols-outlined text-primary-container text-sm" data-icon="monitoring">monitoring</span>
+<span class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-wider">System Health</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-[9px] text-on-surface-variant uppercase">API Endpoint</span>
+</div>
+<span class="font-label-mono text-[10px] text-primary-container">99.99%</span>
+</div>
+<div class="h-[3px] bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[99.99%] shadow-[0_0_6px_#00ff41]"></div>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-[9px] text-on-surface-variant uppercase">Pipeline Throughput</span>
+</div>
+<span class="font-label-mono text-[10px] text-primary-container">OPTIMIZED</span>
+</div>
+<div class="h-[3px] bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[85%] shadow-[0_0_6px_#00ff41]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Module 01: Media Processing Engine (coming soon) -->
+<section class="px-margin-mobile md:px-margin-desktop py-stack-lg bg-surface-container-lowest relative overflow-hidden">
+<div class="mb-12 flex items-baseline gap-4">
+<span class="font-label-mono text-label-mono text-primary-container"></span>
+<h2 class="font-headline-lg text-headline-lg uppercase tracking-tight">MEDIA PROCESSING ENGINE (soon)</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter max-w-screen-2xl mx-auto">
+<div class="lg:col-span-8 glass-panel hairline-border rounded-lg relative min-h-[350px] md:min-h-[450px] overflow-hidden group">
+<!-- Three.js Visualizer - Centered Node Block Animation -->
+<div class="absolute inset-0 w-full h-full bg-transparent" style="display:block;">
+<div id="threejs-container-ANIMATION_5" style="width:100%;height:100%;position:absolute;inset:0;"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ================================================
+// <<< THREE.JS CRYSTAL CONSTELLATION CONFIG >>>
+// Edit these values directly to tune the animation:
+// ================================================
+const CONFIG = {
+  nodeSize: 0.15,        // Radius of each node sphere (default: 0.12)
+  nodeCount: 25,         // Number of nodes (default: 27)
+  rotationSpeed: 0.0012, // Y-axis rotation speed (default: 0.0005)
+  nodeSpeed: 0.010,      // Drift speed of nodes (default: 0.006)
+  nodeSpread: 6.2,         // Spread radius from center (default: 8)
+  lineOpacity: 0.3,      // Opacity of connection lines (default: 0.3)
+  minConnections: 2,     // Minimum connections per node (default: 2)
+  extraConnections: 3,   // Extra random connections per node (default: 3)
+};
+// ================================================
+
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_5');
+  if (!container) return;
+
+  const width = container.clientWidth || window.innerWidth;
+  const height = container.clientHeight || window.innerHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
+  camera.position.set(0, 0, 18);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  container.appendChild(renderer.domElement);
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  // --- Build crystal constellation nodes ---
+  const nodes = [];
+  const nodeGeometry = new THREE.SphereGeometry(CONFIG.nodeSize, 10, 10);
+  const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff41 });
+
+  // Generate nodes in a layered crystal-like formation
+  const layers = 3;
+  const nodesPerLayer = Math.ceil(CONFIG.nodeCount / layers);
+  let nodeIdx = 0;
+
+  for (let layer = 0; layer < layers; layer++) {
+    const layerRadius = 2 + (layer / (layers - 1)) * CONFIG.nodeSpread;
+    const count = Math.min(nodesPerLayer, CONFIG.nodeCount - nodeIdx);
+    for (let i = 0; i < count; i++) {
+      const mesh = new THREE.Mesh(nodeGeometry, nodeMaterial);
+      
+      // Golden angle spiral distribution for beautiful crystal pattern
+      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+      const theta = goldenAngle * i;
+      const phi = Math.acos(1 - 2 * (i + 0.5) / count);
+      
+      // Add slight randomness for organic feel
+      const jitter = 0.3;
+      const r = layerRadius + (Math.random() - 0.5) * jitter;
+      
+      mesh.position.set(
+        r * Math.sin(phi) * Math.cos(theta),
+        r * Math.cos(phi) * 0.7 + (Math.random() - 0.5) * 0.5,
+        r * Math.sin(phi) * Math.sin(theta) * 0.6
+      );
+      
+      // Store base position and give each node a unique drift velocity
+      const basePos = mesh.position.clone();
+      const velocity = new THREE.Vector3(
+        (Math.random() - 0.5) * CONFIG.nodeSpeed,
+        (Math.random() - 0.5) * CONFIG.nodeSpeed,
+        (Math.random() - 0.5) * CONFIG.nodeSpeed
+      );
+      
+      mesh.userData = {
+        velocity: velocity,
+        basePos: basePos,
+        phase: Math.random() * Math.PI * 2, // oscillation phase
+        amplitude: 0.3 + Math.random() * 0.5, // oscillation amplitude
+      };
+      
+      nodes.push(mesh);
+      group.add(mesh);
+      nodeIdx++;
+    }
+  }
+
+  // --- Build guaranteed connected web ---
+  // Each node connects to its 2 nearest neighbors + extra random connections
+  // This ensures NO broken links - every node is part of the web
+  
+  function buildConnectionWeb() {
+    const connections = new Set(); // Store as "i-j" strings to avoid duplicates
+    
+    // For each node, find its nearest neighbors
+    for (let i = 0; i < nodes.length; i++) {
+      // Calculate distances to all other nodes
+      const distances = [];
+      for (let j = 0; j < nodes.length; j++) {
+        if (i === j) continue;
+        const dist = nodes[i].position.distanceTo(nodes[j].position);
+        distances.push({ index: j, distance: dist });
+      }
+      
+      // Sort by distance and connect to the closest ones
+      distances.sort((a, b) => a.distance - b.distance);
+      
+      // Connect to the minimum required nearest neighbors
+      for (let k = 0; k < CONFIG.minConnections && k < distances.length; k++) {
+        const j = distances[k].index;
+        const key = i < j ? `${i}-${j}` : `${j}-${i}`;
+        connections.add(key);
+      }
+      
+      // Add extra random connections for web density
+      for (let k = 0; k < CONFIG.extraConnections; k++) {
+        const j = Math.floor(Math.random() * nodes.length);
+        if (j === i) continue;
+        const key = i < j ? `${i}-${j}` : `${j}-${i}`;
+        connections.add(key);
+      }
+    }
+    
+    // Also ensure the graph is fully connected (no isolated clusters)
+    // Use a simple BFS to check connectivity and add bridges if needed
+    const visited = new Set();
+    const queue = [0];
+    visited.add(0);
+    
+    while (queue.length > 0) {
+      const current = queue.shift();
+      for (const key of connections) {
+        const parts = key.split('-').map(Number);
+        let neighbor = -1;
+        if (parts[0] === current) neighbor = parts[1];
+        if (parts[1] === current) neighbor = parts[0];
+        if (neighbor >= 0 && !visited.has(neighbor)) {
+          visited.add(neighbor);
+          queue.push(neighbor);
+        }
+      }
+    }
+    
+    // If some nodes are isolated, bridge them to the main graph
+    if (visited.size < nodes.length) {
+      for (let i = 0; i < nodes.length; i++) {
+        if (!visited.has(i)) {
+          // Find closest node in the main graph
+          let minDist = Infinity;
+          let closest = 0;
+          for (const v of visited) {
+            const dist = nodes[i].position.distanceTo(nodes[v].position);
+            if (dist < minDist) {
+              minDist = dist;
+              closest = v;
+            }
+          }
+          const key = i < closest ? `${i}-${closest}` : `${closest}-${i}`;
+          connections.add(key);
+          visited.add(i);
+        }
+      }
+    }
+    
+    return connections;
+  }
+
+  const lineMaterial = new THREE.LineBasicMaterial({
+    color: 0x00ff41,
+    transparent: true,
+    opacity: CONFIG.lineOpacity
+  });
+
+  let lineSegments;
+  let connectionSet = buildConnectionWeb();
+
+  function updateLines() {
+    if (lineSegments) group.remove(lineSegments);
+    const points = [];
+    
+    // Use the pre-computed connections for guaranteed web integrity
+    for (const key of connectionSet) {
+      const parts = key.split('-').map(Number);
+      points.push(nodes[parts[0]].position.clone());
+      points.push(nodes[parts[1]].position.clone());
+    }
+    
+    if (points.length > 0) {
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      lineSegments = new THREE.LineSegments(geometry, lineMaterial);
+      group.add(lineSegments);
+    }
+  }
+
+  const mouse = new THREE.Vector2(0, 0);
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  });
+
+  let time = 0;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    time += 0.01;
+
+    // Nodes drift with organic oscillation - like a living constellation
+    nodes.forEach((node, i) => {
+      // Orbital drift around base position
+      const phase = node.userData.phase + time;
+      const amp = node.userData.amplitude;
+      
+      // Each node moves in a unique Lissajous-like path
+      node.position.x = node.userData.basePos.x + Math.sin(phase) * amp * 0.3;
+      node.position.y = node.userData.basePos.y + Math.cos(phase * 0.7) * amp * 0.3;
+      node.position.z = node.userData.basePos.z + Math.sin(phase * 1.3 + 1) * amp * 0.3;
+      
+      // Add the velocity drift
+      node.position.x += node.userData.velocity.x;
+      node.position.y += node.userData.velocity.y;
+      node.position.z += node.userData.velocity.z;
+      
+      // Soft boundary - gently push back toward center if too far
+      const distFromBase = node.position.distanceTo(node.userData.basePos);
+      if (distFromBase > 3.0) {
+        node.userData.velocity.multiplyScalar(-0.5);
+      }
+    });
+
+    updateLines();
+    
+    // Gentle rotation - like observing a crystal sphere
+    group.rotation.y += CONFIG.rotationSpeed;
+    group.rotation.x += (mouse.y * 0.2 - group.rotation.x) * 0.01;
+    group.rotation.z += (mouse.x * 0.08 - group.rotation.z) * 0.01;
+
+    renderer.render(scene, camera);
+  }
+
+  window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  });
+
+  animate();
+})();
+</script>
+</div>
+<div class="font-label-mono text-label-mono text-primary/60 p-4 z-10 relative">NODE(s)</div>
+<div class="absolute bottom-0 right-0 p-4 z-10">
+<div class="font-label-mono text-label-mono text-primary flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_8px_#00ff41]"></span>
+                        ACTIVE
+                    </div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-4">
+<!-- Stat Card 1 -->
+<div class="glass-panel hairline-border p-6 rounded-lg hover:border-primary-container/40 transition-colors group">
+<div class="flex justify-between mb-4">
+<span class="font-label-mono text-label-mono text-primary-container uppercase">Content Velocity</span>
+<span class="material-symbols-outlined text-primary-container text-sm" data-icon="trending_up">trending_up</span>
+</div>
+<div class="font-headline-md text-headline-md mb-1">5+ <span class="text-body-md text-on-surface-variant">posts/everyday</span></div>
+<p class="text-on-surface-variant text-sm">Daily syndication growth rate.</p>
+</div>
+<!-- Stat Card 2 -->
+<div class="glass-panel hairline-border p-6 rounded-lg hover:border-primary-container/20 transition-colors">
+<div class="flex justify-between mb-4">
+<span class="font-label-mono text-label-mono text-primary-container uppercase">Lead Capture Efficiency</span>
+<span class="material-symbols-outlined text-primary-container text-sm" data-icon="group">group</span>
+</div>
+<div class="flex items-baseline gap-2">
+<div class="font-headline-md text-headline-md">24/7</div>
+<span class="flex items-center gap-1 font-label-mono text-[10px] text-primary-container bg-primary-container/10 px-2 py-0.5 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> ACTIVE
+                            </span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1">Concurrent Inquiries Handled.</p>
+</div>
+<!-- Stat Card 3 -->
+<div class="glass-panel hairline-border p-6 rounded-lg hover:border-primary-container/40 transition-colors">
+<div class="flex justify-between mb-4">
+<span class="font-label-mono text-label-mono text-primary-container uppercase">Uptime & Latency</span>
+<span class="material-symbols-outlined text-primary-container text-sm" data-icon="sensors">sensors</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<div class="font-headline-md text-headline-md">99.9%</div>
+<div class="text-[10px] font-label-mono text-on-surface-variant uppercase">Reliability</div>
+</div>
+<div>
+<div class="font-headline-md text-headline-md">12ms</div>
+<div class="text-[10px] font-label-mono text-on-surface-variant uppercase">Avg Latency</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Module 02: High-Fidelity Interactive Modules -->
+<section class="px-margin-mobile md:px-margin-desktop py-stack-lg space-y-stack-lg">
+<div class="mb-12 flex items-baseline gap-4">
+<span class="font-label-mono text-label-mono text-primary-container"></span>
+<h2 class="font-headline-lg text-headline-lg uppercase tracking-tight">HIGH-FIDELITY INTERACTIVE MODULES</h2>
+</div>
+<!-- Sub Module A: Multi-Line Call Matrix with Telemetry Stream -->
+<div class="max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-2 mb-4">
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">The Multi-Line Call Matrix</h3>
+<p class="text-on-surface-variant max-w-lg mb-6">
+                        An animated network graph showing 5 concurrent inbound lines lighting up. Hover over any line card to establish a telemetry connection and view the live, streaming text transcripts of our AI agent qualifying the buyer.
+                    </p>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<div class="space-y-2" id="line-cards">
+<div class="line-card p-3 hairline-border flex justify-between items-center bg-surface hover:bg-primary-container/5 hover:border-primary-container/40 transition-all cursor-pointer" data-line="0">
+<span class="font-label-mono text-[11px] text-on-surface-variant uppercase">LINE_01 // BUDGET_VALIDATION</span>
+<span class="material-symbols-outlined text-sm text-primary-container" data-icon="radio_button_checked">radio_button_checked</span>
+</div>
+<div class="line-card p-3 hairline-border flex justify-between items-center bg-surface hover:bg-primary-container/5 hover:border-primary-container/40 transition-all cursor-pointer" data-line="1">
+<span class="font-label-mono text-[11px] text-on-surface-variant uppercase">LINE_02 // TIMELINE_TRIAGE</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant opacity-0" data-icon="radio_button_checked">radio_button_checked</span>
+</div>
+<div class="line-card p-3 hairline-border flex justify-between items-center bg-surface hover:bg-primary-container/5 hover:border-primary-container/40 transition-all cursor-pointer" data-line="2">
+<span class="font-label-mono text-[11px] text-on-surface-variant uppercase">LINE_03 // PRE_APPROVAL</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant opacity-0" data-icon="radio_button_checked">radio_button_checked</span>
+</div>
+<div class="line-card p-3 hairline-border flex justify-between items-center bg-surface hover:bg-primary-container/5 hover:border-primary-container/40 transition-all cursor-pointer" data-line="3">
+<span class="font-label-mono text-[11px] text-on-surface-variant uppercase">LINE_04 // PROPERTY_MATCHING</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant opacity-0" data-icon="radio_button_checked">radio_button_checked</span>
+</div>
+<div class="line-card p-3 hairline-border flex justify-between items-center bg-surface hover:bg-primary-container/5 hover:border-primary-container/40 transition-all cursor-pointer" data-line="4">
+<span class="font-label-mono text-[11px] text-on-surface-variant uppercase">LINE_05 // CLOSING_COORDINATION</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant opacity-0" data-icon="radio_button_checked">radio_button_checked</span>
+</div>
+</div>
+<div class="glass-panel hairline-border min-h-[250px] md:h-[450px] relative rounded-lg overflow-hidden flex items-center justify-center">
+<div class="relative z-10 w-full h-full p-2 md:p-4 flex flex-col">
+<div class="bg-black/80 backdrop-blur-md p-3 md:p-4 hairline-border font-label-mono text-[11px] flex flex-col h-full flex-1">
+<div class="flex justify-between text-primary-container mb-2 border-b border-outline-variant/20 pb-2 flex-shrink-0">
+<span>CONSOLE // TELEMETRY_STREAM</span>
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse flex-shrink-0"></span>
+</div>
+<div id="telemetry-output" class="flex-1 overflow-y-auto space-y-1 text-[11px] leading-relaxed no-scrollbar" style="scrollbar-width:thin;">
+<div class="text-on-surface-variant">[SYSTEM: STANDBY]</div>
+<div class="text-on-surface-variant">> Awaiting matrix query...</div>
+<div class="text-on-surface-variant">> Hover over a line node to inspect transcripts.</div>
+</div>
+<div class="pt-2 flex justify-between text-[9px] text-on-surface-variant/50 border-t border-outline-variant/20 mt-2 flex-shrink-0">
+<span>BAUD: 9600</span>
+<span>SECURE LINK</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sub Module B: Asset Velocity Engine -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center pt-stack-lg max-w-screen-2xl mx-auto">
+<div class="order-2 lg:order-1 glass-panel hairline-border h-[350px] md:h-[450px] rounded-lg p-6 md:p-8 relative">
+<div class="grid grid-cols-12 gap-4 h-full items-center">
+<div class="col-span-4 flex flex-col items-center justify-center gap-4">
+<div class="w-16 h-16 md:w-20 md:h-20 hairline-border flex items-center justify-center bg-surface relative group cursor-pointer overflow-hidden">
+<div class="absolute inset-0 bg-primary-container/5 translate-y-full group-hover:translate-y-0 transition-transform"></div>
+<span class="material-symbols-outlined text-primary-container text-3xl md:text-4xl" data-icon="video_library">video_library</span>
+</div>
+<span class="font-label-mono text-[10px] text-on-surface-variant">1 RAW UPLOAD</span>
+</div>
+<div class="col-span-8 space-y-4">
+<div class="flex items-center gap-4 bg-surface p-3 hairline-border rounded hover:border-primary-container/40 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-primary-container" data-icon="play_circle">play_circle</span>
+<div class="flex-1">
+<div class="text-xs font-bold text-on-surface">YouTube Shorts</div>
+<div class="text-[9px] text-on-surface-variant font-label-mono">9:16 • 60s • Optimized</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface p-3 hairline-border rounded hover:border-primary-container/40 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-primary-container" data-icon="music_note">music_note</span>
+<div class="flex-1">
+<div class="text-xs font-bold text-on-surface">TikTok</div>
+<div class="text-[9px] text-on-surface-variant font-label-mono">9:16 • 30s • Captioned</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface p-3 hairline-border rounded hover:border-primary-container/40 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-primary-container" data-icon="photo_camera">photo_camera</span>
+<div class="flex-1">
+<div class="text-xs font-bold text-on-surface">Instagram Reels</div>
+<div class="text-[9px] text-on-surface-variant font-label-mono">1:1 • 45s • Branded</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-4 right-6 md:right-8 font-label-mono text-[9px] text-on-surface-variant uppercase">1 RAW INGESTION → ∞ DESTINATIONS</div>
+</div>
+<div class="order-1 lg:order-2 space-y-6 lg:pl-12">
+<div class="flex items-center gap-2">
+</div>
+<h3 class="font-headline-md text-headline-md">The Asset Velocity Engine (soon)</h3>
+<p class="text-on-surface-variant">
+                        One raw video upload. The engine splits it into ATLEAST BASIC 5 optimized platforms and deploys across every major platform - automatically. No editing. No scheduling. No manual work.
+                    </p>
+<ul class="space-y-3 font-label-mono text-[12px] text-on-surface">
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full"></span> 1 RAW UPLOAD
+                        </li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full"></span> 5 OPTIMIZED OUTPUTS
+                        </li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full"></span> DEPLOYED WITHIN 24HRS
+                        </li>
+</ul>
+</div>
+</div>
+<!-- Sub Module C: Interactive ROI Matrix Slider -->
+<div class="pt-stack-lg border-t border-outline-variant/20">
+<div class="mb-12">
+<div class="flex items-center gap-2 mb-4">
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">The Interactive ROI Matrix Slider</h3>
+<p class="text-on-surface-variant max-w-2xl">
+                        Calculate your leaked revenue from missed inbound inquiries and see the true ROI of implementing the Techibrum Autonomous Pipeline.
+                    </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter max-w-screen-2xl mx-auto">
+<div class="lg:col-span-5 space-y-8 lg:pr-12">
+<div class="space-y-6">
+<div class="flex justify-between items-baseline">
+<label class="text-sm font-medium text-on-surface">Avg Commission Size ($)</label>
+<span class="text-primary-container font-label-mono" id="commission-value">$15,000</span>
+</div>
+<input class="w-full" id="commission-slider" max="50000" min="5000" type="range" value="15000"/>
+</div>
+<div class="space-y-6">
+<div class="flex justify-between items-baseline">
+<label class="text-sm font-medium text-on-surface">Missed-inquiries Rate (%)</label>
+<span class="text-primary-container font-label-mono" id="rate-value">25%</span>
+</div>
+<input class="w-full" id="rate-slider" max="50" min="5" type="range" value="25"/>
+</div>
+<div class="space-y-6">
+<div class="flex justify-between items-baseline">
+<label class="text-sm font-medium text-on-surface">Monthly Inbound Leads</label>
+<span class="text-primary-container font-label-mono" id="leads-value">50</span>
+</div>
+<input class="w-full" id="leads-slider" max="500" min="10" type="range" value="50"/>
+</div>
+<div class="flex items-start gap-3 p-4 bg-primary-container/5 hairline-border text-[11px] text-on-surface-variant italic">
+<span class="material-symbols-outlined text-primary-container text-base" data-icon="info">info</span>
+<p>CAUTION: Leaked revenue reflects only the fraction of missed leads statistically likely to close - Total actual closed deal value = 10% of the Total Missed Oppertunites</p>
+</div>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="glass-panel hairline-border p-6 md:p-8 rounded-lg flex flex-col justify-between min-h-[250px] md:h-[300px]">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">LEAKED REVENUE</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="stat-card-value text-[32px] md:text-[40px] font-bold text-on-surface leading-none" id="leaked-revenue">$18,750</div>
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase mt-2">LOST COMMISSIONS / YEAR</div>
+</div>
+</div>
+<div class="glass-panel hairline-border p-6 md:p-8 rounded-lg flex flex-col justify-between min-h-[250px] md:h-[300px] border-primary-container/30">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-mono text-label-mono text-primary-container uppercase">RETAINED SYSTEM VALUE</span>
+<span class="bg-primary-container text-on-primary font-label-mono text-[9px] px-2 py-0.5 rounded-full ml-2">UPTO</span>
+</div>
+<button id="roi-breakdown-toggle" class="text-primary-container/60 hover:text-primary-container transition-colors" title="Show calculation breakdown">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="stat-card-value text-[32px] md:text-[40px] font-bold text-primary-container leading-none" id="retained-value">$17,250</div>
+<div class="font-label-mono text-[10px] text-primary-container uppercase mt-2">NET RECLAIMED VALUE / YEAR</div>
+</div>
+<!-- ROI Breakdown -->
+<div id="roi-breakdown" class="roi-breakdown border-t border-primary-container/20">
+<div class="font-label-mono text-[10px] text-on-surface-variant space-y-1 pt-3">
+<p class="text-primary-container font-semibold mb-2">// CALCULATION BREAKDOWN</p>
+<p id="roi-line-1">Monthly Leads × Lost Rate × Commission ÷ 10</p>
+<p id="roi-line-2" class="text-primary-container">50 × 25% × $15,000 ÷ 10 = $1,562.50/mo</p>
+<p id="roi-line-3">× 12 months = <span id="roi-annual-leaked">$18,750</span> lost/year</p>
+<p id="roi-line-4">− System Cost ($1,500/mo × 12 = $18,000)</p>
+<p id="roi-line-5" class="text-primary-container font-semibold">= <span id="roi-net-value">$17,250</span> Retained Value</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Module 03: System FAQ & Documentation -->
+<section id="faq" class="px-margin-mobile md:px-margin-desktop py-stack-lg bg-surface-container-low">
+<div class="mb-12 flex items-baseline gap-4">
+<span class="font-label-mono text-label-mono text-primary-container"></span>
+<h2 class="font-headline-lg text-headline-lg uppercase tracking-tight">SYSTEM FAQ & DOCUMENTATION</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-2xl mx-auto">
+<!-- FAQ Item 1 -->
+<div class="glass-panel hairline-border p-6 rounded-lg hover:bg-surface-container-high transition-all group">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-mono text-[10px] text-primary-container">// SCALING</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:text-primary-container" data-icon="sync">sync</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4 text-on-surface leading-snug">How does the engine scale my content hands-free?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                        You simply drop your raw, unedited listing footage into our designated system terminal. The cloud engine autonomously isolates the highest-intent plot points, optimizes audio staging, and applies clean dynamic formatting.
+                    </p>
+</div>
+<!-- FAQ Item 2 -->
+<div class="glass-panel hairline-border p-6 rounded-lg hover:bg-surface-container-high transition-all group">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-mono text-[10px] text-primary-container">// AESTHETICS</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:text-primary-container" data-icon="palette">palette</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4 text-on-surface leading-snug">Will automated media look generic or cheap?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                        No, because our architecture completely eliminates the standard, low-quality "AI slop" seen across social networks. Every output looks and feels like it was designed by a premium media house.
+                    </p>
+</div>
+<!-- FAQ Item 3 -->
+<div class="glass-panel hairline-border p-6 rounded-lg hover:bg-surface-container-high transition-all group">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-mono text-[10px] text-primary-container">// INBOUND-LEADS</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:text-primary-container" data-icon="forum">forum</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4 text-on-surface leading-snug">How do I handle the massive surge in inbound leads?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                        When your content volume spikes, High level of leads will pour in, we then activate your Multi-Line Conversational Voice Agent. This network can answer up to 5 incoming listing inquiries simultaneously at the exact same millisecond.
+                    </p>
+</div>
+<!-- FAQ Item 4 -->
+<div class="glass-panel hairline-border p-6 rounded-lg hover:bg-surface-container-high transition-all group">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-mono text-[10px] text-primary-container">// AGENT_INTERACTION</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:text-primary-container" data-icon="smart_toy">smart_toy</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4 text-on-surface leading-snug">Will an AI Voice Agent alienate my high-net-worth clients?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                        Not at all, because the conversational intelligence is strictly limited to routine background validation and intent mapping. It never handles sensitive, high-level negotiations, giving you a seamless, professional handoff.
+                    </p>
+</div>
+<!-- FAQ Item 5 -->
+<div class="glass-panel hairline-border p-6 rounded-lg hover:bg-surface-container-high transition-all group">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-mono text-[10px] text-primary-container">// COMMAND_CENTER</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:text-primary-container" data-icon="dashboard">dashboard</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4 text-on-surface leading-snug">What is the purpose of the Live Command Center?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                        The Command Center serves as your unified system console to view your entire digital infrastructure at a glance. Instead of checking ten different apps, you get a clean, high-fidelity dashboard.
+                    </p>
+</div>
+<!-- FAQ Item 6 -->
+<div class="glass-panel hairline-border p-6 rounded-lg hover:bg-surface-container-high transition-all group">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-mono text-[10px] text-primary-container">// ROI-COST</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:text-primary-container" data-icon="payments">payments</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4 text-on-surface leading-snug">How much does this cost and what is the true ROI?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                        Closing just one extra property transaction from our engine pays for your entire yearly infrastructure cost. We lower your entry friction by deploying the core Media Pipeline first at a clean $2,500/month.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md bg-surface-container-lowest border-t border-outline-variant/20 mt-20">
+<div class="space-y-4 text-center md:text-left mb-8 md:mb-0">
+<div class="font-headline-md text-headline-md font-bold text-primary-container">TECHIBRUM</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant">© 2026 TECHIBRUM GLOBAL. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex items-center gap-8">
+<a class="text-on-surface-variant font-label-mono text-label-mono hover:text-primary-fixed transition-all uppercase" href="https://www.instagram.com/techibrum.ai">INSTAGRAM</a>
+<a class="text-on-surface-variant font-label-mono text-label-mono hover:text-primary-fixed transition-all uppercase" href="https://www.linkedin.com/company/techibrum-ai">LINKEDIN</a>
+</div>
+</footer>
+<script>
+// ============================================================
+// <<< NICHE TYPEWRITER CONFIG >>>
+// Edit these values to control the revolving typewriter display:
+// ============================================================
+const TYPEWRITER_CONFIG = {
+    // The 3 niches to cycle through
+    niches: ["REAL ESTATE", "DENTAL", "LEGAL"],
+    // The prefix text that stays before the typed niche name
+    prefix: "FOR ",
+    // Subtitle text for each niche
+    subtitles: [
+        "Accelerate your property reach with automated high-definition pipelines. We engineer the systems that power modern real estate distribution.",
+        "Transform your practice with automated patient acquisition pipelines. We engineer the systems that power modern dental practice growth.",
+        "Streamline your case intake with automated client acquisition pipelines. We engineer the systems that power modern legal practice growth."
+    ],
+    typeSpeed: 80,        // Milliseconds per character typed (default: 80)
+    deleteSpeed: 30,      // Milliseconds per character deleted (default: 30)
+    pauseBeforeDelete: 3500, // Pause after typing completes before deleting (ms) - includes 1 extra sec
+    pauseBeforeType: 500,    // Pause after deleting before typing next (ms)
+    active: true          // Set to false to pause the rotation
+};
+// ============================================================
+
+// Niche Typewriter Effect
+(function() {
+    const rotatorEl = document.getElementById('niche-rotator');
+    const subtitleEl = document.getElementById('niche-subtitle');
+    if (!rotatorEl) return;
+
+    let currentIndex = 0;
+    let isAnimating = false;
+    let timeoutId = null;
+
+    // Start typewriter: type out the current niche, then delete, then move to next
+    function typeNiche(nicheIndex) {
+        if (!TYPEWRITER_CONFIG.active || isAnimating) return;
+        isAnimating = true;
+
+        const nicheText = TYPEWRITER_CONFIG.prefix + TYPEWRITER_CONFIG.niches[nicheIndex];
+        let charIndex = 0;
+
+        // Clear the element
+        rotatorEl.textContent = '';
+        rotatorEl.classList.add('typewriter-cursor');
+
+        // Type each character
+        function typeNextChar() {
+            if (charIndex < nicheText.length) {
+                rotatorEl.textContent = nicheText.substring(0, charIndex + 1);
+                charIndex++;
+                timeoutId = setTimeout(typeNextChar, TYPEWRITER_CONFIG.typeSpeed);
+            } else {
+                // Typing complete - remove cursor, update subtitle
+                rotatorEl.classList.remove('typewriter-cursor');
+                if (subtitleEl) {
+                    subtitleEl.style.transition = 'opacity 0.4s ease';
+                    subtitleEl.style.opacity = '0';
+                    setTimeout(() => {
+                        subtitleEl.textContent = TYPEWRITER_CONFIG.subtitles[nicheIndex];
+                        subtitleEl.style.opacity = '1';
+                    }, 400);
+                }
+
+                // Pause (with extra 1 sec), then delete
+                timeoutId = setTimeout(() => {
+                    deleteChars();
+                }, TYPEWRITER_CONFIG.pauseBeforeDelete);
+            }
+        }
+
+        function deleteChars() {
+            function deleteNextChar() {
+                if (rotatorEl.textContent.length > 0) {
+                    rotatorEl.textContent = rotatorEl.textContent.slice(0, -1);
+                    timeoutId = setTimeout(deleteNextChar, TYPEWRITER_CONFIG.deleteSpeed);
+                } else {
+                    // Deletion complete - move to next niche
+                    rotatorEl.classList.remove('typewriter-cursor');
+                    isAnimating = false;
+                    const nextIndex = (nicheIndex + 1) % TYPEWRITER_CONFIG.niches.length;
+                    currentIndex = nextIndex;
+                    timeoutId = setTimeout(() => {
+                        typeNiche(nextIndex);
+                    }, TYPEWRITER_CONFIG.pauseBeforeType);
+                }
+            }
+            deleteNextChar();
+        }
+
+        typeNextChar();
+    }
+
+    // Start the typewriter effect
+    typeNiche(0);
+})();
+
+// ============================================================
+// TELEMETRY STREAM - Animated typewriter for LINE_01 through LINE_05
+// ============================================================
+const telemetryData = [
+    { // LINE_01 // BUDGET_VALIDATION
+        lines: [
+            "[AGENT] Initializing budget validation protocol...",
+            "[SYSTEM] Parsing client financial profile...",
+            "[DATA] Income: $185,000/yr | DTI: 28% | Credit: 742",
+            "[AGENT] Cross-referencing loan limits for FHA/Conventional...",
+            "[RESULT] Pre-qualified: $720,000 - BUDGET CONFIRMED",
+            "[SYSTEM] Writing validation hash to ledger...",
+            "[AGENT] Budget threshold: PASS. Routing to timeline triage."
+        ]
+    },
+    { // LINE_02 // TIMELINE_TRIAGE
+        lines: [
+            "[AGENT] Initiating timeline triage sequence...",
+            "[SYSTEM] Scanning property market velocity indices...",
+            "[DATA] Avg DOM: 34 days | Seasonality: HIGH",
+            "[AGENT] Calculating optimal close window...",
+            "[MODEL] Projected close: 21-28 days from offer",
+            "[SYSTEM] Cross-referencing seller motivation score...",
+            "[RESULT] Timeline: ACCELERATED - Priority queue assigned"
+        ]
+    },
+    { // LINE_03 // PRE_APPROVAL
+        lines: [
+            "[AGENT] Launching pre-approval verification...",
+            "[SYSTEM] Connecting to underwriting gateway...",
+            "[DATA] Pulling credit bureau reports (3B)...",
+            "[SCORE] Experian: 738 | TransUnion: 745 | Equifax: 740",
+            "[AGENT] Validating asset documentation...",
+            "[RESULT] Pre-approval: $650,000 - LETTER GENERATED",
+            "[SYSTEM] Encrypting and routing to lender queue."
+        ]
+    },
+    { // LINE_04 // PROPERTY_MATCHING
+        lines: [
+            "[AGENT] Activating property matching engine...",
+            "[SYSTEM] Scanning MLS for active comparables...",
+            "[DATA] 14 properties match budget ±10% radius",
+            "[AGENT] Running preference vector analysis...",
+            "[MODEL] Top match: 84% similarity score",
+            "[SYSTEM] Generating side-by-side comparison matrix...",
+            "[RESULT] Shortlist: 3 properties - SENDING TO CLIENT"
+        ]
+    },
+    { // LINE_05 // CLOSING_COORDINATION
+        lines: [
+            "[AGENT] Initializing closing coordination workflow...",
+            "[SYSTEM] Retrieving escrow and title contacts...",
+            "[DATA] Closing costs estimated: $18,400",
+            "[AGENT] Scheduling appraisal and inspection window...",
+            "[SYSTEM] Coordinating with settlement agent...",
+            "[MODEL] Risk assessment: LOW - All contingencies met",
+            "[RESULT] Closing date: CONFIRMED - Final docs prepared"
+        ]
+    }
+];
+
+const telemetryOutput = document.getElementById('telemetry-output');
+let telemetryInterval = null;
+let currentLineIndex = 0;
+let currentCharIndex = 0;
+let currentData = null;
+let isTyping = false;
+
+function typeNextChar() {
+    if (!currentData || currentLineIndex >= currentData.lines.length) {
+        // All lines done - show completion
+        if (telemetryInterval) {
+            clearInterval(telemetryInterval);
+            telemetryInterval = null;
+        }
+        isTyping = false;
+        const completionMsg = document.createElement('div');
+        completionMsg.className = 'text-primary-container';
+        completionMsg.textContent = '> [STREAM: COMPLETE] - Awaiting next query...';
+        telemetryOutput.appendChild(completionMsg);
+        telemetryOutput.scrollTop = telemetryOutput.scrollHeight;
+        return;
+    }
+
+    const line = currentData.lines[currentLineIndex];
+    if (currentCharIndex === 0) {
+        // Start new line
+        const lineEl = document.createElement('div');
+        lineEl.className = 'text-on-surface-variant';
+        lineEl.id = 'current-telemetry-line';
+        telemetryOutput.appendChild(lineEl);
+    }
+
+    const lineEl = document.getElementById('current-telemetry-line');
+    if (lineEl) {
+        lineEl.textContent = '> ' + line.substring(0, currentCharIndex + 1);
+        telemetryOutput.scrollTop = telemetryOutput.scrollHeight;
+    }
+
+    currentCharIndex++;
+
+    if (currentCharIndex >= line.length) {
+        // Line complete - move to next after a pause
+        if (lineEl) lineEl.id = '';
+        currentLineIndex++;
+        currentCharIndex = 0;
+        clearInterval(telemetryInterval);
+        telemetryInterval = null;
+        setTimeout(() => {
+            if (currentData) {
+        telemetryInterval = setInterval(typeNextChar, 45);
+            }
+        }, 400);
+    }
+}
+
+function startTelemetry(lineIndex) {
+    // Clear existing
+    if (telemetryInterval) {
+        clearInterval(telemetryInterval);
+        telemetryInterval = null;
+    }
+    isTyping = false;
+    currentLineIndex = 0;
+    currentCharIndex = 0;
+    currentData = telemetryData[lineIndex];
+    
+    // Clear output and show header
+    telemetryOutput.innerHTML = '';
+    const header = document.createElement('div');
+    header.className = 'text-primary-container border-b border-outline-variant/20 pb-1 mb-1';
+    header.textContent = `[CONNECTED: LINE_${String(lineIndex + 1).padStart(2, '0')}]`;
+    telemetryOutput.appendChild(header);
+    
+    // Start typing after short delay
+    setTimeout(() => {
+        isTyping = true;
+        telemetryInterval = setInterval(typeNextChar, 45);
+    }, 300);
+}
+
+// Attach hover events to line cards
+document.querySelectorAll('.line-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        const lineIdx = parseInt(this.getAttribute('data-line'));
+        // Highlight active card
+        document.querySelectorAll('.line-card').forEach(c => {
+            c.querySelector('.material-symbols-outlined').classList.add('opacity-0');
+            c.querySelector('.material-symbols-outlined').classList.remove('text-primary-container');
+            c.classList.remove('border-primary-container/40');
+        });
+        this.querySelector('.material-symbols-outlined').classList.remove('opacity-0');
+        this.querySelector('.material-symbols-outlined').classList.add('text-primary-container');
+        this.classList.add('border-primary-container/40');
+        startTelemetry(lineIdx);
+    });
+});
+
+// ============================================================
+// ROI MATRIX SLIDER - Live calculation
+// ============================================================
+// Formula: leads × (lostRate/100) × commission / 10
+// Where /10 represents the 10% estimated conversion rate
+
+const commissionSlider = document.getElementById('commission-slider');
+const rateSlider = document.getElementById('rate-slider');
+const leadsSlider = document.getElementById('leads-slider');
+const commissionVal = document.getElementById('commission-value');
+const rateVal = document.getElementById('rate-value');
+const leadsVal = document.getElementById('leads-value');
+const leakedRevenue = document.getElementById('leaked-revenue');
+const retainedValue = document.getElementById('retained-value');
+
+// ROI breakdown elements
+const roiLine1 = document.getElementById('roi-line-1');
+const roiLine2 = document.getElementById('roi-line-2');
+const roiLine3 = document.getElementById('roi-line-3');
+const roiLine4 = document.getElementById('roi-line-4');
+const roiLine5 = document.getElementById('roi-line-5');
+const roiAnnualLeaked = document.getElementById('roi-annual-leaked');
+const roiNetValue = document.getElementById('roi-net-value');
+
+function updateROI() {
+    const commission = parseFloat(commissionSlider.value);
+    const lostRate = parseFloat(rateSlider.value);      // e.g. 25
+    const monthlyLeads = parseFloat(leadsSlider.value); // e.g. 50
+
+    // Update display values
+    commissionVal.textContent = '$' + commission.toLocaleString();
+    rateVal.textContent = lostRate + '%';
+    leadsVal.textContent = monthlyLeads;
+
+    // Formula: leads × (lostRate/100) × commission / 10
+    // This gives the annual leaked revenue (the /10 is the 10% conversion rate)
+    const monthlyLostValue = monthlyLeads * (lostRate / 100) * commission / 10;
+    const annualLostValue = monthlyLostValue * 12;
+
+    leakedRevenue.textContent = '$' + Math.round(annualLostValue).toLocaleString();
+
+    // Retained value = leaked revenue - system cost ($1,500/month * 12 = $18,000/year)
+    const systemCost = 1500 * 12; // $18,000/year
+    const retained = Math.max(0, annualLostValue - systemCost);
+    retainedValue.textContent = '$' + Math.round(retained).toLocaleString();
+
+    // Update breakdown
+    if (roiLine2) {
+        roiLine2.textContent = `${monthlyLeads} × ${lostRate}% × $${commission.toLocaleString()} ÷ 10 = $${monthlyLostValue.toFixed(2)}/mo`;
+    }
+    if (roiAnnualLeaked) {
+        roiAnnualLeaked.textContent = '$' + Math.round(annualLostValue).toLocaleString();
+    }
+    if (roiNetValue) {
+        roiNetValue.textContent = '$' + Math.round(retained).toLocaleString();
+    }
+}
+
+commissionSlider.addEventListener('input', updateROI);
+rateSlider.addEventListener('input', updateROI);
+leadsSlider.addEventListener('input', updateROI);
+
+// Initial calculation
+updateROI();
+
+// ROI Breakdown Toggle
+const roiBreakdownToggle = document.getElementById('roi-breakdown-toggle');
+const roiBreakdown = document.getElementById('roi-breakdown');
+
+if (roiBreakdownToggle && roiBreakdown) {
+    roiBreakdownToggle.addEventListener('click', function() {
+        roiBreakdown.classList.toggle('open');
+        const icon = this.querySelector('.material-symbols-outlined');
+        if (roiBreakdown.classList.contains('open')) {
+            icon.textContent = 'close';
+            icon.setAttribute('data-icon', 'close');
+        } else {
+            icon.textContent = 'info';
+            icon.setAttribute('data-icon', 'info');
+        }
+    });
+}
+
+// Mobile menu toggle
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('open');
+        const icon = this.querySelector('.material-symbols-outlined');
+        if (mobileMenu.classList.contains('open')) {
+            icon.textContent = 'close';
+            icon.setAttribute('data-icon', 'close');
+        } else {
+            icon.textContent = 'menu';
+            icon.setAttribute('data-icon', 'menu');
+        }
+    });
+}
+</script>
+</body>
+</html>
